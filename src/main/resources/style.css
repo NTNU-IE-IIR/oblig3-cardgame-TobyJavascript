@@ -4,4 +4,21 @@
     -fx-font-size: 14pt;
     -fx-background-color: #4CAF50;
     -fx-text-fill: white;
+    -fx-max-width: 200px;
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+}
+
+/* styles.css */
+.vButtonBox {
+    -fx-padding: 10px;
+}
+
+.label {
+    -fx-font-size: 14pt;
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-max-width: 200px;
+    -fx-border-color: black;
+    -fx-border-width: 2px;
 }

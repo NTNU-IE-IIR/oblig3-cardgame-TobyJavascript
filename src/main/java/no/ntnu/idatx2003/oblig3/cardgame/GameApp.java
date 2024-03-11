@@ -10,6 +10,5 @@ public class GameApp {
          * Initialization adn GUI
          */
         appMain(args);
-
     }
 }
