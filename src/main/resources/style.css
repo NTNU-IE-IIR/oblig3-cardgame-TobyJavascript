@@ -1,0 +1,7 @@
+
+/* styles.css */
+.custom-button {
+    -fx-font-size: 14pt;
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+}
