@@ -24,7 +24,7 @@
 
 .label {
     -fx-font-size: 14pt;
-    -fx-background-color: #ffbe00;
+    -fx-background-color: #ffffff;
     -fx-text-fill: #000000;
     -fx-max-width: 200px;
     -fx-border-color: black;
@@ -34,9 +34,9 @@
 
 .specialCardBoxes {
     -fx-font-size: 14pt;
-    -fx-background-color: #ffbe00;
+    -fx-background-color: gray;
     -fx-text-fill: #000000;
-    -fx-min-width: 300px;
+    -fx-min-width: 333px;
     -fx-border-color: black;
     -fx-border-width: 2px;
     -fx-padding: 10px;

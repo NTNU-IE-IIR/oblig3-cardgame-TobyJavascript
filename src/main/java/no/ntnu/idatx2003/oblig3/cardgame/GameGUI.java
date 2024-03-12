@@ -79,7 +79,7 @@ public class GameGUI extends Application {
         hSpecialCardBox.getChildren().addAll(queenSpadeBox,heartBox,flushBox);
         root.setBottom(hSpecialCardBox);
 
-        Scene scene = new Scene(root, 1000, 700);
+        Scene scene = new Scene(root, 999, 700);
         scene.getStylesheets().add("style.css");
 
         primaryStage.setTitle("Card game ultimate");
@@ -97,7 +97,7 @@ public class GameGUI extends Application {
 
         queenSpadeBox.setText("Queen spade status: false");
         heartBox.setText("Cards that are heart: ");
-        flushBox.setText("Flush status: ");
+        flushBox.setText("Flush status: false");
     }
     private void handleClick2() {
         cardSlot1.setText(playingCardDeck.getCardBasedOnIndex(0).getAsString());
@@ -110,14 +110,30 @@ public class GameGUI extends Application {
     }
 
     private void checkAfterSpecialCards () {
-        if (cardEvaluator.checkIfFlush()) {
+        queenSpadeBox.setText("Queen spade status: false");
+        heartBox.setText("Cards that are heart: ");
+        flushBox.setText("Flush status: false");
+        int equalCount = 0;
 
+
+        for (int i = 0; i < 5; i++) {
+            if (cardEvaluator.checkIfQueenSpade(playingCardDeck.getCardBasedOnIndex(i))) {
+                queenSpadeBox.setText("Queen spade status: true");
+            }
+
+            if (cardEvaluator.checkIfHeart(playingCardDeck.getCardBasedOnIndex(i))) {
+                String currentText = heartBox.getText();
+                heartBox.setText(currentText + playingCardDeck.getCardBasedOnIndex(i).getAsString() + " ");
+            }
         }
-        if (cardEvaluator.checkIfQueenSpade()) {
 
-        }
-        if (cardEvaluator.checkIfHeart()) {
-
+        for (int i = 0; i < 4; i++) {
+            if (cardEvaluator.checkForEqualTypeCards(playingCardDeck.getCardBasedOnIndex(i), playingCardDeck.getCardBasedOnIndex(i+1))) {
+                equalCount++;
+            }
+            if (equalCount == 4) {
+                flushBox.setText("Flush status: true");
+            }
         }
     }
 
