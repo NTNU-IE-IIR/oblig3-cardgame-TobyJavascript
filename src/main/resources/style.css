@@ -1,9 +1,17 @@
 
+.body {
+    -fx-background-color: gray;
+}
+
+.vButtonBox {
+    -fx-background-color: #595959;
+}
+
 /* styles.css */
 .custom-button {
     -fx-font-size: 14pt;
-    -fx-background-color: #4CAF50;
-    -fx-text-fill: white;
+    -fx-background-color: #ffbe00;
+    -fx-text-fill: #000000;
     -fx-max-width: 200px;
     -fx-border-color: black;
     -fx-border-width: 2px;
@@ -16,9 +24,20 @@
 
 .label {
     -fx-font-size: 14pt;
-    -fx-background-color: #4CAF50;
-    -fx-text-fill: white;
+    -fx-background-color: #ffbe00;
+    -fx-text-fill: #000000;
     -fx-max-width: 200px;
     -fx-border-color: black;
     -fx-border-width: 2px;
+    -fx-padding: 10px;
+}
+
+.specialCardBoxes {
+    -fx-font-size: 14pt;
+    -fx-background-color: #ffbe00;
+    -fx-text-fill: #000000;
+    -fx-min-width: 300px;
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+    -fx-padding: 10px;
 }
