@@ -8,6 +8,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/**
+ * Class that represents a graphic interface that the user can interact with.
+ * It has buttons to intact with and labels for output to the user.
+ *
+ * @author Tobias Olsen Reiakvam
+ */
 public class GameGUI extends Application {
     // Initializes playing card deck and card evaluator
     PlayingCardDeck playingCardDeck = new PlayingCardDeck();
@@ -23,6 +29,9 @@ public class GameGUI extends Application {
     private Label heartBox;
     private Label flushBox;
 
+    /**
+     * Start method that creates gui components and sets it up.
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
         // Create a BorderPane
@@ -87,6 +96,34 @@ public class GameGUI extends Application {
         primaryStage.show();
     }
 
+    private void createContainers () {
+        // Create a BorderPane
+        BorderPane root = new BorderPane();
+        VBox vButtonBox = new VBox();
+        HBox hLabelBox = new HBox();
+        HBox hSpecialCardBox = new HBox();
+
+        // Creates buttons
+        Button button1 = new Button("Deal cards");
+        Button button2 = new Button("Show cards");
+
+        // Creates card slots
+        cardSlot1 = new Label("");
+        cardSlot2 = new Label("");
+        cardSlot3 = new Label("");
+        cardSlot4 = new Label("");
+        cardSlot5 = new Label("");
+
+        // Create special card info boxes
+        queenSpadeBox = new Label("");
+        heartBox = new Label("");
+        flushBox = new Label("");
+    }
+
+    /**
+     * Method for button "Deal cards" that shuffles deck.
+     * First 5 cards are the cards the player will see.
+     */
     private void handleClick() {
         playingCardDeck.shuffle();
         cardSlot1.setText("?");
@@ -99,6 +136,10 @@ public class GameGUI extends Application {
         heartBox.setText("Cards that are heart: ");
         flushBox.setText("Flush status: false");
     }
+
+    /**
+     * Method for button "Show cards" that prints values out via the labels.
+     */
     private void handleClick2() {
         cardSlot1.setText(playingCardDeck.getCardBasedOnIndex(0).getAsString());
         cardSlot2.setText(playingCardDeck.getCardBasedOnIndex(1).getAsString());
@@ -109,12 +150,17 @@ public class GameGUI extends Application {
         checkAfterSpecialCards();
     }
 
+    /**
+     * Checks after asked for specific card or card scenarios and acts based on result.
+     *
+     * Looks for queen spade, heart cards and flushes.
+     * Starts by resetting the labels for output.
+     */
     private void checkAfterSpecialCards () {
         queenSpadeBox.setText("Queen spade status: false");
         heartBox.setText("Cards that are heart: ");
         flushBox.setText("Flush status: false");
         int equalCount = 0;
-
 
         for (int i = 0; i < 5; i++) {
             if (cardEvaluator.checkIfQueenSpade(playingCardDeck.getCardBasedOnIndex(i))) {
@@ -136,7 +182,9 @@ public class GameGUI extends Application {
             }
         }
     }
-
+    /**
+     * Method for exiting the application.
+     */
     @Override
     public void stop() {
         System.exit(0);

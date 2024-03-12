@@ -1,10 +1,15 @@
 package no.ntnu.idatx2003.oblig3.cardgame;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Represents a deck of cards by using a list to store objects of PlayingCard.
+ * The class have all functions needed from a deck of cards.
+ *
+ * @author Tobias Olsen Reiakvam
+ */
 public class PlayingCardDeck {
     // List of all cards
     private List<PlayingCard> cardDeck;
@@ -12,17 +17,27 @@ public class PlayingCardDeck {
     // Variable field
     public List<Character> cardTypes;
 
+    /**
+     * Sets up the card deck and the array of card types.
+     */
     public PlayingCardDeck() {
         this.cardDeck = new ArrayList<>();
         this.cardTypes = new ArrayList<>();
+
+        // Fill in card types.
         this.cardTypes.add('S');
         this.cardTypes.add('H');
         this.cardTypes.add('D');
         this.cardTypes.add('C');
+
+        // Initialize deck of cards
         initializeDeck();
     }
 
-    // Initialize the deck with all 52 standard playing cardDeck
+    /**
+     * Initializes deck by filling it with n cards * 13.
+     * N is based on how many types of cards in cardTypes.
+     */
     private void initializeDeck() {
         for (int i = 0; i < cardTypes.size(); i++) {
             for (int j = 1; j <= 13; j++) {
@@ -33,7 +48,9 @@ public class PlayingCardDeck {
         }
     }
 
-    // Shuffle the deck
+    /**
+     * Method that shuffles all cards in deck in random order.
+     */
     public void shuffle() {
         Collections.shuffle(cardDeck);
     }
@@ -47,34 +64,54 @@ public class PlayingCardDeck {
         }
     }
 
-    // Check if the deck is empty
+    /**
+     * Function for checking if no cards exist in deck.
+     */
     public boolean isEmpty() {
         return cardDeck.isEmpty();
     }
 
-    // Reset the deck (re-initialize and shuffle)
+    /**
+     * Resets deck of card.
+     * Fills it with cards and shuffles it.
+     */
     public void reset() {
         cardDeck.clear();
         initializeDeck();
         shuffle();
     }
 
-    // Get the number of cardDeck remaining in the deck
+    /**
+     * Returns the size of the deck.
+     *
+     * @return cardDeck.size() an int that represents the size of the list.
+     */
     public int getSizeOfDeck() {
         return cardDeck.size();
     }
 
-    // Get the arraylist of cards
+    /**
+     * Returns the list of cards.
+     *
+     * @return cardDeck
+     */
     public List getDeck() {
         return cardDeck;
     }
 
-    // Method to clear an ArrayList
+    /**
+     * Method for clearing the array.
+     */
     public void clearArrayList() {
         cardDeck.clear();
     }
 
-    // Method for getting card based on index
+    /**
+     * Returns the list of cards.
+     *
+     * @param index and int representing the index of the card you are looking for.
+     * @return the card you want based on index.
+     */
     public PlayingCard getCardBasedOnIndex(int index) {
         return cardDeck.get(index);
     }
