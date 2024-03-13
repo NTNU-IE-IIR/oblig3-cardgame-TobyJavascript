@@ -22,19 +22,21 @@
     -fx-padding: 10px;
 }
 
-.label {
-    -fx-font-size: 14pt;
+.cardSlot {
+    -fx-font-size: 50pt;
     -fx-background-color: #ffffff;
     -fx-text-fill: #000000;
-    -fx-max-width: 200px;
+    -fx-min-width: 150px;
+    -fx-min-height: 300px;
     -fx-border-color: black;
     -fx-border-width: 2px;
     -fx-padding: 10px;
+    -fx-alignment: center;
 }
 
 .specialCardBoxes {
     -fx-font-size: 14pt;
-    -fx-background-color: gray;
+    -fx-background-color: #60bd60;
     -fx-text-fill: #000000;
     -fx-min-width: 333px;
     -fx-border-color: black;

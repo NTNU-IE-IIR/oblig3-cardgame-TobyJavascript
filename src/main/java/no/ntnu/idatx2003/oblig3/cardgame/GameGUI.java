@@ -1,5 +1,6 @@
 package no.ntnu.idatx2003.oblig3.cardgame;
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -28,6 +29,7 @@ public class GameGUI extends Application {
     private Label queenSpadeBox;
     private Label heartBox;
     private Label flushBox;
+    private Label scoreBox;
 
     /**
      * Start method that creates gui components and sets it up.
@@ -56,6 +58,9 @@ public class GameGUI extends Application {
         heartBox = new Label("");
         flushBox = new Label("");
 
+        // Create score box
+        scoreBox = new Label("");
+
         // Adds class to root
         root.getStyleClass().add("body");
 
@@ -68,17 +73,19 @@ public class GameGUI extends Application {
         button2.setOnAction(event -> handleClick2());
 
         // Adds classes to labels
-        cardSlot1.getStyleClass().add("label");
-        cardSlot2.getStyleClass().add("label");
-        cardSlot3.getStyleClass().add("label");
-        cardSlot4.getStyleClass().add("label");
-        cardSlot5.getStyleClass().add("label");
+        cardSlot1.getStyleClass().add("cardSlot");
+        cardSlot2.getStyleClass().add("cardSlot");
+        cardSlot3.getStyleClass().add("cardSlot");
+        cardSlot4.getStyleClass().add("cardSlot");
+        cardSlot5.getStyleClass().add("cardSlot");
         queenSpadeBox.getStyleClass().add("specialCardBoxes");
         heartBox.getStyleClass().add("specialCardBoxes");
         flushBox.getStyleClass().add("specialCardBoxes");
+        scoreBox.getStyleClass().add("specialCardBoxes");
 
         // Style via java
         vButtonBox.setSpacing(10);
+        hLabelBox.setAlignment(Pos.CENTER);
 
         // Distributes objects to border areas
         vButtonBox.getChildren().addAll(button1, button2);
@@ -87,37 +94,14 @@ public class GameGUI extends Application {
         root.setCenter(hLabelBox);
         hSpecialCardBox.getChildren().addAll(queenSpadeBox,heartBox,flushBox);
         root.setBottom(hSpecialCardBox);
+        root.setTop(scoreBox);
 
-        Scene scene = new Scene(root, 999, 700);
+        Scene scene = new Scene(root, 1200, 700);
         scene.getStylesheets().add("style.css");
 
         primaryStage.setTitle("Card game ultimate");
         primaryStage.setScene(scene);
         primaryStage.show();
-    }
-
-    private void createContainers () {
-        // Create a BorderPane
-        BorderPane root = new BorderPane();
-        VBox vButtonBox = new VBox();
-        HBox hLabelBox = new HBox();
-        HBox hSpecialCardBox = new HBox();
-
-        // Creates buttons
-        Button button1 = new Button("Deal cards");
-        Button button2 = new Button("Show cards");
-
-        // Creates card slots
-        cardSlot1 = new Label("");
-        cardSlot2 = new Label("");
-        cardSlot3 = new Label("");
-        cardSlot4 = new Label("");
-        cardSlot5 = new Label("");
-
-        // Create special card info boxes
-        queenSpadeBox = new Label("");
-        heartBox = new Label("");
-        flushBox = new Label("");
     }
 
     /**
@@ -157,6 +141,8 @@ public class GameGUI extends Application {
      * Starts by resetting the labels for output.
      */
     private void checkAfterSpecialCards () {
+
+        scoreBox.setText("Card sum: "+Integer.toString(getCardSum()));
         queenSpadeBox.setText("Queen spade status: false");
         heartBox.setText("Cards that are heart: ");
         flushBox.setText("Flush status: false");
@@ -182,6 +168,21 @@ public class GameGUI extends Application {
             }
         }
     }
+
+    /**
+     * Method that adds the value of the first 5 cards in the deck and returns it.
+     *
+     * @return cardSum
+     */
+    public int getCardSum () {
+        int cardSum = 0;
+
+        for (int i = 0;i < 5; i++) {
+            cardSum = cardSum + playingCardDeck.getCardBasedOnIndex(i).getFace();
+        }
+        return cardSum;
+    }
+
     /**
      * Method for exiting the application.
      */
