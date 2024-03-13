@@ -1,0 +1,45 @@
+
+.body {
+    -fx-background-color: gray;
+}
+
+.vButtonBox {
+    -fx-background-color: #595959;
+}
+
+/* styles.css */
+.custom-button {
+    -fx-font-size: 14pt;
+    -fx-background-color: #ffbe00;
+    -fx-text-fill: #000000;
+    -fx-max-width: 200px;
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+}
+
+/* styles.css */
+.vButtonBox {
+    -fx-padding: 10px;
+}
+
+.cardSlot {
+    -fx-font-size: 50pt;
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #000000;
+    -fx-min-width: 150px;
+    -fx-min-height: 300px;
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+    -fx-padding: 10px;
+    -fx-alignment: center;
+}
+
+.specialCardBoxes {
+    -fx-font-size: 14pt;
+    -fx-background-color: #60bd60;
+    -fx-text-fill: #000000;
+    -fx-min-width: 333px;
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+    -fx-padding: 10px;
+}
